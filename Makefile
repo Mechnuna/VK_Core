@@ -28,3 +28,5 @@ fclean:
 	@printf "\e[38;5;206mBinaries deleted🗑\e[0m\n"
 
 re: fclean all
+
+.PHONY: all bonus clean flcean re 
