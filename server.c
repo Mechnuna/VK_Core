@@ -47,7 +47,6 @@ int main (int argc,char** argv)
             }
             clt_port=ntohs(sock_clt.sin_port);
             printf("Start of the connection for : %s:%d\n", dst, clt_port);
-            
             bzero(filename,256);
             intps = time(NULL);
             tmi = localtime(&intps);
@@ -59,7 +58,6 @@ int main (int argc,char** argv)
                 exit (3);
             }
             bzero(buffer,BUFFERT);
-            
             n = recv(nsid,buffer,BUFFERT,0);
             while (n)
             {
@@ -68,18 +66,18 @@ int main (int argc,char** argv)
                     perror("Recv fail");
                     exit(5);
                 }
-                if((m = write (fd, buffer ,n)) == -1)
+                if ((m = write(fd, buffer ,n)) == -1)
                 {
                     perror("Write fail");
                     exit (6);
                 }
-                count = count+m;
-                bzero(buffer,BUFFERT);
-                n = recv(nsid,buffer,BUFFERT,0);
+                count = count + m;
+                bzero(buffer, BUFFERT);
+                n = recv(nsid,buffer, BUFFERT,0);
             }
             close(sfd);
             close(fd);
-    }
+        }
     close(nsid);
     printf("End of transmission from %s.%d\n",dst,clt_port);
     printf("Number of bytes received : %ld \n",count);
